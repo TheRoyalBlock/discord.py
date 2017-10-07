@@ -259,28 +259,6 @@ class HelpFormatter:
             self._paginator.add_line(shortened)
 
     @asyncio.coroutine
-    def format_help_for(self, context, command_or_bot):
-        """Formats the help page and handles the actual heavy lifting of how
-        the help command looks like. To change the behaviour, override the
-        :meth:`~.HelpFormatter.format` method.
-
-        Parameters
-        -----------
-        context: :class:`.Context`
-            The context of the invoked help command.
-        command_or_bot: :class:`.Command` or :class:`.Bot`
-            The bot or command that we are getting the help of.
-
-        Returns
-        --------
-        list
-            A paginated output of the help command.
-        """
-        self.context = context
-        self.command = command_or_bot
-        return (yield from self.format())
-
-    @asyncio.coroutine
     def format(self):
         """Handles the actual behaviour involved with formatting.
 
